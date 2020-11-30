@@ -1,0 +1,29 @@
+{%extends 'home/base.html'%}
+
+{%block content-1%}
+Blogry Create Blog
+{%endblock%}
+
+{%block content-2%}
+<h2 class="text-center my-4">Write Your Blog</h2>
+<div class="container my-4 border border-dark p-5">
+    <form method="POST" action="/">
+        {%csrf_token%}
+        <div class="form-group">
+            <label for="blogTitle" class="h5">Title of Blog</label>
+            <input type="text" class="form-control" name="blogTitle" id="blogTitle" placeholder="Enter Title of Blog">
+        </div>
+        <div class="form-group my-4">
+            <label for="blogAuthor" class="h5">Authors name</label>
+            <input type="text" class="form-control" name="blogAuthor" id="blogAuthor" placeholder="Enter Your Name">
+        </div>
+        <div class="form-group my-4">
+            <label for="blogContent" class="h5">Blog Content</label>
+            <textarea class="form-control" name="blogContent" id="blogContent" rows="10" placeholder="One Paragraph Only"></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+</div>
+{%endblock%}

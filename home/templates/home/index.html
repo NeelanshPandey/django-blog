@@ -1,0 +1,40 @@
+{%extends 'home/base.html'%}
+
+{%block content-1%}
+Blogry Home
+{%endblock%}
+
+{%block content-2%}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert {% if message.tags %} alert-{{ message.tags }} {% endif %} alert-dismissible fade show my-0"
+            role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <div class="container my-4 text-center p-5 border border-dark rounded bg-light text-dark">
+        <h3>Create your own Blog</h3>
+        <a href="createBlog"><button type="button" class="btn btn-success btn-sm btn-block mt-4 py-2">Create Blog</button></a>
+    </div>
+    <div class="container my-5 text-center p-3 border border-dark rounded bg-light text-dark">
+        <h3 class="mb-5" >Blogs</h3>
+        {% for blog in blogs%}
+            <div class="card mb-4 border border-dark">
+                <div class="card-header text-left alert-success text-dark">
+                    <h5>{{blog.blogTitle}}</h5>
+                </div>
+                <div class="card-body text-left">
+                    <p class="card-text">Author name: {{blog.blogAuthor}}  </p>
+                    <p class="card-text">Date Added: {{blog.time}}</p>
+                    <a href="details/{{blog.id}}/" class="btn btn-success">Open the blog</a>
+                </div>
+            </div>
+        {%endfor%}
+    </div>
+       
+    
+{%endblock%}
